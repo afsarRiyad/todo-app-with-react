@@ -26,7 +26,6 @@ function App() {
    const handleEdit = (id) =>{
     let arr = [...taskList]
     setTask(taskList[id])
-    task.focus
     setId(id)
     setSubmit(false)
     setUpdate(true)
