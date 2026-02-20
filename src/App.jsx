@@ -2,8 +2,7 @@ import { use, useState } from 'react'
 function App() {
    const [taskList, setTaskList] = useState([])
     const [task, setTask] = useState("")
-    const [submit, setSubmit] = useState(true)
-    const [update, setUpdate] = useState(false)
+    const [isTrue, setIsTrue] = useState(true)
     const [id, setId] = useState()
    const handleChange = (e) =>{
         setTask(e.target.value);
@@ -27,8 +26,7 @@ function App() {
     let arr = [...taskList]
     setTask(taskList[id])
     setId(id)
-    setSubmit(false)
-    setUpdate(true)
+    setIsTrue(false)
    }
 
    const handleUpdate = () =>{
@@ -37,13 +35,12 @@ function App() {
       let arr = [...taskList]
       setTaskList(arr);
       setTask('')
-      setSubmit(true)
-      setUpdate(false)
+      setIsTrue(true)
    }
 
    const handleKey = (e) =>{
      if(e.key === 'Enter')
-      if(submit === true){
+      if(isTrue === true){
         handleSubmit()
       }else{
         handleUpdate()
@@ -52,9 +49,11 @@ function App() {
   return (
     <>
      <input type="text" onChange={handleChange} onKeyDown={handleKey} value={task}/>
-     <button onClick={handleSubmit} style={{display: submit ? "inline-block" : "none"}}>Submit</button>
 
-     <button onClick={handleUpdate} style={{display : update ? "inline-block" : "none"}}>Update</button>
+     {
+      isTrue ? <button onClick={handleSubmit} >Submit</button> :
+     <button onClick={handleUpdate} >Update</button>
+     }
 
 
      <ol>
