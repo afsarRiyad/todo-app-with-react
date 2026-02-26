@@ -1,14 +1,15 @@
 import { use, useState } from 'react'
+
 function App() {
-   const [taskList, setTaskList] = useState([])
-    const [task, setTask] = useState("")
-    const [isTrue, setIsTrue] = useState(true)
-    const [id, setId] = useState()
-   const handleChange = (e) =>{
-        setTask(e.target.value);
+     const [taskList, setTaskList] = useState([])
+     const [task, setTask] = useState("")
+     const [isTrue, setIsTrue] = useState(true)
+     const [id, setId] = useState()
+     const handleChange = (e) =>{
+          setTask(e.target.value);
    }
    const handleSubmit = () =>{
-       if(!task) return
+      if(!task) return
       let arr = [...taskList]
       arr.push(task)
       setTaskList(arr);
@@ -30,8 +31,8 @@ function App() {
    }
 
    const handleUpdate = () =>{
-     if(!task) return
-     taskList[id] = task
+      if(!task) return
+      taskList[id] = task
       let arr = [...taskList]
       setTaskList(arr);
       setTask('')
